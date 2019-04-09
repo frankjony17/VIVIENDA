@@ -1,0 +1,28 @@
+NomencladorBundle\Entity\Provincia:
+    constraints:
+        - \Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: nombre
+
+NomencladorBundle\Entity\Empresa:
+    constraints:
+        - \Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: codigo
+
+NomencladorBundle\Entity\Clasificacion:
+    constraints:
+        - \Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: nombre
+
+NomencladorBundle\Entity\Conformidad:
+    constraints:
+        - \Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: nombre
+
+NomencladorBundle\Entity\QuejasTipo:
+    constraints:
+        - \Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: nombre
+
+NomencladorBundle\Entity\Departamento:
+    constraints:
+        - \Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: nombre
+
+NomencladorBundle\Entity\TrabajadorCargo:
+    constraints:
+        - \Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: nombre
+

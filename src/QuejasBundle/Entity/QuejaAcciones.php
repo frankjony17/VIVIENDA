@@ -23,6 +23,13 @@ class QuejaAcciones
     private $id;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha", type="date", nullable=false)
+     */
+    private $fecha;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=48, nullable=false)
@@ -56,6 +63,30 @@ class QuejaAcciones
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set fecha
+     *
+     * @param \DateTime $fecha
+     *
+     * @return Entrevista
+     */
+    public function setFecha($fecha)
+    {
+        $this->fecha = $fecha;
+
+        return $this;
+    }
+
+    /**
+     * Get fecha
+     *
+     * @return \DateTime
+     */
+    public function getFecha()
+    {
+        return $this->fecha;
     }
 
     /**

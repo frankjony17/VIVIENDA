@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/QuejasBundle/Controller/DespachoController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/QuejasBundle/Controller/EntrevistaController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/QuejasBundle/Controller/QuejasController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/QuejasBundle/Resources/views/Reportes/entrevista.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/controller/quejas/QuejasJefeDepartamentoController.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/controller/quejas/QuejasViewportController.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/controller/quejas/ViewportEntrevistaController.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/store/AccionesStore.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/store/QuejasStore.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/store/RespuestaStore.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/view/DespachoViewport.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/view/EntrevistaViewport.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/view/QuejasViewport.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/web/js/app/view/admin/LoginViewport.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/view/despacho/AcuerdosPlanteamientosForm.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/view/despacho/DespachoForm.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/view/despacho/DespachoGrid.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/view/despacho/PlanteamientoGrid.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/view/quejas/cliente/ClienteForm.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/view/quejas/cliente/ClienteGrid.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/view/quejas/entrevista/EntrevistaForm.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/view/quejas/entrevista/EntrevistaGrid.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/view/quejas/quejas/QuejaForm.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/view/quejas/quejas/QuejasGrid.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/view/quejas/quejas/RespuestasForm.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/js/app/view/quejas/respuesta/RespuestaGrid.js" charset="UTF-8" />
   </component>
 </project>

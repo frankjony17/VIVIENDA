@@ -1,0 +1,28 @@
+
+{% extends "::base.html.twig" %}
+
+{% block title %}QUEJAS-VIVIENDA{% endblock %}
+
+{% block favicon %}{{ asset('favicon.ico') }}{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/entrevista/index.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        {#{% include "AdminBundle:Admin:globalScript.html.twig" %}#}
+        Ext.application({
+            name: 'VIV',
+            appFolder: '/js/app',
+            controllers: [
+                "quejas.QuejasViewportController",
+                "quejas.QuejasJefeDepartamentoController",
+//                "quejas.EntrevistaController"
+            ],
+            launch: function(){
+                Ext.create('VIV.view.QuejasViewport');
+            }
+        });
+    </script>
+{% endblock %}

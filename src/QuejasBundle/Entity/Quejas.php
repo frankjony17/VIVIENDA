@@ -46,10 +46,8 @@ class Quejas
     /**
      * @var \Entrevista
      *
-     * @ORM\ManyToOne(targetEntity="Entrevista")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="entrevista_id", referencedColumnName="id")
-     * })
+     * @ORM\OneToOne(targetEntity="Entrevista", inversedBy="queja")
+     * @ORM\JoinColumn(name="entrevista_id", referencedColumnName="id")
      */
     private $entrevista;
 

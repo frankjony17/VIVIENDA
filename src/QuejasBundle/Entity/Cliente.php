@@ -32,9 +32,16 @@ class Cliente
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre_apellidos", type="string", length=128, nullable=false)
+     * @ORM\Column(name="nombre", type="string", length=48, nullable=false)
      */
-    private $nombreApellidos;
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="apellidos", type="string", length=48, nullable=false)
+     */
+    private $apellidos;
 
     /**
      * @var string
@@ -140,27 +147,51 @@ class Cliente
     }
 
     /**
-     * Set nombreApellidos
+     * Set nombre
      *
-     * @param string $nombreApellidos
+     * @param string $nombre
      *
      * @return Cliente
      */
-    public function setNombreApellidos($nombreApellidos)
+    public function setNombre($nombre)
     {
-        $this->nombreApellidos = $nombreApellidos;
+        $this->nombre = $nombre;
 
         return $this;
     }
 
     /**
-     * Get nombreApellidos
+     * Get nombre
      *
      * @return string
      */
-    public function getNombreApellidos()
+    public function getNombre()
     {
-        return $this->nombreApellidos;
+        return $this->nombre;
+    }
+
+    /**
+     * Set apellidos
+     *
+     * @param string $apellidos
+     *
+     * @return Cliente
+     */
+    public function setApellidos($apellidos)
+    {
+        $this->apellidos = $apellidos;
+
+        return $this;
+    }
+
+    /**
+     * Get apellidos
+     *
+     * @return string
+     */
+    public function getApellidos()
+    {
+        return $this->apellidos;
     }
 
     /**

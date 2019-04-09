@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new NomencladorBundle\NomencladorBundle(),
             new QuejasBundle\QuejasBundle(),
             new DespachoBundle\DespachoBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

@@ -22,22 +22,35 @@ class EntrevistaController extends Controller
     public function listAction()
     {
         $data = array();
-
         foreach($this->getDoctrine()->getManager()->getRepository('QuejasBundle:Entrevista')->findAll() as $value ) {
+            $html = "<table><thead><tr><th>Código</th><th>Expediente</th><th>Clasificación</th><th>Conformidad</th></tr></thead>";
+            $html .="<tbody><tr><td>". $value->getCodigo() ."</td><td>". $value->getExpediente() ."</td><td>". $value->getClasificacion()->getNombre() ."</td><td>". $value->getConformidad()->getNombre() ."</td></tr></tbody></table>";
+            $html .="<br>";
+            $html .="<table><tr><th>Síntesis</th><th>". $value->getSintesis() ."</th></tr></table>";
+            $html .="<br>";
+            $html .="<table><tr><th>Tramites Realizados</th><th>". $value->getTramitesRealizados() ."</th></tr></table>";
+            $html .="<br>";
+            $html .="<table><tr><th>Concluciones</th><th>". $value->getConcluciones() ."</th></tr></table>";
+            $html .="<br>";
+            $html .="<table><tr><th>Nivel Solución</th><th>". $value->getNivelSolucion() ."</th></tr></table>";
+
             $data[] = array(
                 'id' => $value->getId(), 
-                'fecha' => $value->getFecha(), 
+                'fecha' => $value->getFecha()->format('Y-m-d'),
                 'codigo' => $value->getCodigo(), 
                 'asunto' => $value->getAsunto(), 
                 'sintesis' => $value->getSintesis(), 
                 'tramites_realizados' => $value->getTramitesRealizados(), 
                 'concluciones' => $value->getConcluciones(), 
                 'nivel_solucion' => $value->getNivelSolucion(), 
-                'expediente' => $value->getExpediente(), 
-                'cliente_id' => $value->getCliente()->getCi(), 
-                'clasificacion_id' => $value->getClasificacion()->getNombre(), 
-                'trabajador_id' => $value->getTrabajador()->getNombreApellidos(), 
-                'conformidad_id' => $value->getConformidad()->getNombre()
+                'expediente' => $value->getExpediente(),
+                'cliente' => $value->getCliente()->getCi() ." - ". $value->getCliente()->getNombre() ." ". $value->getCliente()->getApellidos(),
+                'cliente_id' => $value->getCliente()->getId(),
+                'clasificacion_id' => $value->getClasificacion()->getId(),
+                'trabajador_id' => $value->getTrabajador()->getId(),
+                'conformidad_id' => $value->getConformidad()->getId(),
+                'queja' => $value->getQuejas() ? true : false,
+                'data' => $html
             );
         }
         return new Response('({"total":"'.count($data).'","data":'.json_encode($data).'})');
@@ -60,7 +73,7 @@ class EntrevistaController extends Controller
             $entity = new Entrevista();
         }
         /* Sets */
-        $entity->setFecha($rq->get('fecha'));
+        $entity->setFecha(new \DateTime($rq->get('fecha')));
         $entity->setCodigo($rq->get('codigo'));
         $entity->setAsunto($rq->get('asunto'));
         $entity->setSintesis($rq->get('sintesis'));
@@ -72,21 +85,21 @@ class EntrevistaController extends Controller
             $entity->setCliente($em->getRepository('QuejasBundle:Cliente')->find($rq->get('cliente_id')));
         }
         if (is_numeric($rq->get('clasificacion_id'))) {
-            $entity->setClasificacion($em->getRepository('QuejasBundle:Clasificacion')->find($rq->get('clasificacion_id')));
+            $entity->setClasificacion($em->getRepository('NomencladorBundle:Clasificacion')->find($rq->get('clasificacion_id')));
         }
         if (is_numeric($rq->get('trabajador_id'))) {
-            $entity->setTrabajador($em->getRepository('QuejasBundle:Trabajador')->find($rq->get('trabajador_id')));
+            $entity->setTrabajador($em->getRepository('NomencladorBundle:Trabajador')->find($rq->get('trabajador_id')));
         }
         if (is_numeric($rq->get('conformidad_id'))) {
-            $entity->setConformidad($em->getRepository('QuejasBundle:Conformidad')->find($rq->get('conformidad_id')));
+            $entity->setConformidad($em->getRepository('NomencladorBundle:Conformidad')->find($rq->get('conformidad_id')));
         }
         /* Validate errors */
         if (count($errors = $this->get('validator')->validate($entity)) > 0) {
-            $errorsString = (string) $errors; // Uses a __toString method on the $errors variable
-            return new Response($errorsString);
+            return new Response('unique');
         }
         $em->persist($entity);
-        return new Response($em->flush());
+        $em->flush();
+        return new Response($entity->getId());
     }
     
     /**
@@ -100,10 +113,9 @@ class EntrevistaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         /* Delete Entrevista */
-        foreach (json_decode($rq->get('ids')) as $id) {
-            $entity = $em->getRepository('QuejasBundle:Entrevista')->find($id);
-            $em->remove($entity);
-        }
-        return new Response($em->flush());
+        $entity = $em->getRepository('QuejasBundle:Entrevista')->find($rq->get('id'));
+        $em->remove($entity);
+        $em->flush();
+        return new Response('');
     }
 }

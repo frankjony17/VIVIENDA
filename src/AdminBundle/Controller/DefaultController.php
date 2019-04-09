@@ -22,5 +22,11 @@ class DefaultController extends Controller
         if ($checker->isGranted('ROLE_ENTREVISTA')) {
             return $this->render('QuejasBundle:Entrevista:index.html.twig');
         }
+        if ($checker->isGranted('ROLE_JEFEDEPARTAMENTO')) {
+            return $this->render('QuejasBundle:JefeDepartamento:index.html.twig');
+        }
+        if ($checker->isGranted('ROLE_DESPACHO')) {
+            return $this->render('QuejasBundle:Despacho:index.html.twig');
+        }
     }
 }

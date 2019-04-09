@@ -34,5 +34,6 @@ security:
 
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
-         - { path: ^/nomenclador, roles: ROLE_ADMIN }
-         - { path: ^/quejas/entrevista, roles: ROLE_ENTREVISTA }
+         - { path: ^/nomenclador, roles: [ROLE_ADMIN, ROLE_ENTREVISTA, ROLE_JEFEDEPARTAMENTO, ROLE_DESPACHO] }
+         - { path: ^/quejas, roles: [ROLE_ENTREVISTA, ROLE_JEFEDEPARTAMENTO, ROLE_DESPACHO] }
+         - { path: ^/despacho, roles: [ROLE_DESPACHO] }

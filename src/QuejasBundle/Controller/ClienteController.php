@@ -27,16 +27,19 @@ class ClienteController extends Controller
             $data[] = array(
                 'id' => $value->getId(), 
                 'ci' => $value->getCi(), 
-                'nombre_apellidos' => $value->getNombreApellidos(), 
-                'calle' => $value->getCalle(), 
+                'nombre' => $value->getNombre(),
+                'apellidos' => $value->getApellidos(),
+                'calle' => $value->getCalle(),
                 'entre' => $value->getEntre(), 
                 'apartamento' => $value->getApartamento(), 
                 'edificio' => $value->getEdificio(), 
                 'casa' => $value->getCasa(), 
                 'telefonos' => $value->getTelefonos(), 
                 'correo' => $value->getCorreo(), 
-                'empresa_id' => $value->getEmpresa()->getNombre(), 
-                'municipio_id' => $value->getMunicipio()->getNombre()
+                'empresa' => $value->getEmpresa() ? $value->getEmpresa()->getNombre() : 'NO (Persona Natural)',
+                'empresa_id' => $value->getEmpresa() ? $value->getEmpresa()->getId() : 'NO',
+                'municipio' => $value->getMunicipio()->getNombre(),
+                'municipio_id' => $value->getMunicipio()->getId()
             );
         }
         return new Response('({"total":"'.count($data).'","data":'.json_encode($data).'})');
@@ -60,7 +63,8 @@ class ClienteController extends Controller
         }
         /* Sets */
         $entity->setCi($rq->get('ci'));
-        $entity->setNombreApellidos($rq->get('nombre_apellidos'));
+        $entity->setNombre($rq->get('nombre'));
+        $entity->setApellidos($rq->get('apellidos'));
         $entity->setCalle($rq->get('calle'));
         $entity->setEntre($rq->get('entre'));
         $entity->setApartamento($rq->get('apartamento'));
@@ -68,16 +72,15 @@ class ClienteController extends Controller
         $entity->setCasa($rq->get('casa'));
         $entity->setTelefonos($rq->get('telefonos'));
         $entity->setCorreo($rq->get('correo'));
-        if (is_numeric($rq->get('empresa_id'))) {
-            $entity->setEmpresa($em->getRepository('QuejasBundle:Empresa')->find($rq->get('empresa_id')));
+        if (is_numeric($rq->get('empresa'))) {
+            $entity->setEmpresa($em->getRepository('NomencladorBundle:Empresa')->find($rq->get('empresa')));
         }
-        if (is_numeric($rq->get('municipio_id'))) {
-            $entity->setMunicipio($em->getRepository('QuejasBundle:Municipio')->find($rq->get('municipio_id')));
+        if (is_numeric($rq->get('municipio'))) {
+            $entity->setMunicipio($em->getRepository('NomencladorBundle:Municipio')->find($rq->get('municipio')));
         }
         /* Validate errors */
         if (count($errors = $this->get('validator')->validate($entity)) > 0) {
-            $errorsString = (string) $errors; // Uses a __toString method on the $errors variable
-            return new Response($errorsString);
+            return new Response('unique');
         }
         $em->persist($entity);
         return new Response($em->flush());

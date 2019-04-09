@@ -4,8 +4,32 @@
 .menu-entrevistas:before{font:18px/1 FontAwesome;color: #589ded;content:"\f0ca"}
 .button-quejas:before{font:18px/1 FontAwesome;color: #26912e;content:"\f0a1"}
 .menu-quejas:before{font:18px/1 FontAwesome;color: #5a8b6f;content:"\f0a2"}
-.menu-quejas-rechazadas:before{font:18px/1 FontAwesome;color: #5a8b6f;content:"\f1f7"}
+.menu-quejas-rechazada:before{font:18px/1 FontAwesome;color: #5a8b6f;content:"\f1f7"}
 .entrevista:before{font:18px/1 FontAwesome;color: #3b6dc3;content:"\f00a"}
 .queja:before{font:18px/1 FontAwesome;color: #ff6259;content:"\f0f3"}
 
 .logout:before{font:18px/1 FontAwesome;color: #df0d16;content:"\f011"}
+.button-add-menu:before{font:18px/1 FontAwesome;color: #df810b;content:"\f0c7"}
+
+.delete-row:before{font:16px/1 FontAwesome;color:#dd6550;content:"\f1f8"}
+.accion-row:before{font:16px/1 FontAwesome;color: #dd8636;content:"\f14b"}
+
+.pdf:before{font:16px/1 FontAwesome;color: #1922dd;content:"\f1c1"}
+
+.queja-color {
+    background-color: #bcffe1;
+}
+.despacho-color {
+    background-color: #ffabae;
+}
+
+.ok-acciones .x-change-cell {
+    background-color: #6eff62;
+    color: #414345;
+    font-weight: bold;
+}
+.pendiente-acciones .x-change-cell {
+    background-color: #ff755d;
+    color: #ffffff;
+    font-weight: bold;
+}

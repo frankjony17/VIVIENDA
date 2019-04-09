@@ -1,0 +1,12 @@
+QuejasBundle\Entity\Cliente:
+    constraints:
+        - \Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: ci
+
+QuejasBundle\Entity\QuejaAcciones:
+    constraints:
+        - \Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: nombre
+
+QuejasBundle\Entity\Despacho:
+    constraints:
+        - \Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: [fechaCulminacion, cliente]
+

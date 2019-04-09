@@ -9,7 +9,7 @@ Ext.define('VIV.controller.quejas.ClienteController', {
             celldblclick: "dblclick",
             resize: "resize"
         },
-        'grid-cliente [text=Adicionar]': {
+        '#menu-clientes-add': {
             click: "showWindows"
         },
         'grid-cliente [text=Eliminar]': {
@@ -26,22 +26,19 @@ Ext.define('VIV.controller.quejas.ClienteController', {
             click: "isValid"
         }
     },
-    /*  */
     resize: function (grid){
         var centerpanel = Ext.getCmp('center-panel-id');
         grid.setHeight(centerpanel.getHeight());
     },
-    /*  */
     afterRenderGrid: function (grid) {
         this.grid = grid;
         this.store = grid.getStore();
     },
-    /*  */
     afterRenderForm: function (win) {
         this.win = win;
         this.form = win.down('form');
     },
-    /* Used in Add and Update > Is valid form? */
+    /* ADD-EDIT-CLIENTES */
     isValid: function () {
         if (this.form.getForm().isValid()) {
             this.submitClick();
@@ -49,36 +46,35 @@ Ext.define('VIV.controller.quejas.ClienteController', {
             this.message('Atención?', '<b><span style="color:red;">Formulario no válido</span></b>, verifique las casillas en <b><span style="color:red;">rojo</span></b>.', Ext.Msg.QUESTION);
         }
     },
-    /*  */
+    /* WIN-ADD */
     showWindows: function () {
         Ext.create('VIV.view.quejas.cliente.ClienteForm', { autoShow: true, btnText: 'Salvar', title: 'Adicionar Cliente' });
     },
-    /*  */
+    /* WIN-EDIT */
     dblclick: function (view, td, cellIndex, record, tr, rowIndex) {
-
         var win = Ext.create('VIV.view.quejas.cliente.ClienteForm',{ btnText: 'Editar', title: 'Editar Cliente' }),
-
             form = win.down('form');
-
         form.loadRecord(record);
-
         win.show();
     },
-    /*  */
     submitClick: function () {
-
         var me = this;
-
         this.form.submit({
             success: function() {
-                me.success();
+                me.form.up('window').close();
+                me.store.reload();
+                Ext.toast('Operación realizada exitosamente.', 'Operación OK');
             },
             failure: function(form, action) {
-                me.message('Error?', action.response.responseText, Ext.Msg.ERROR);
+                if (action.response.responseText === 'unique') {
+                    me.message('Atención', 'El <b>CI</b> ya existe, <b>Verifiquelo!!!</b>', Ext.Msg.INFO);
+                } else {
+                    me.message('Error?', action.response.responseText, Ext.Msg.ERROR);
+                }
             }
         });
     },
-    /*  */
+    /* REMOVE */
     confirmRemove: function () {
         if (this.grid.selModel.getCount() >= 1) {
             Ext.MessageBox.confirm('Confirmación', 'Desea eliminar los registro seleccionado?', confirm, this);
@@ -92,7 +88,6 @@ Ext.define('VIV.controller.quejas.ClienteController', {
             }
         }
     },
-    /*  */
     remove: function () {
         var me = this, ids = [];
 
@@ -114,20 +109,7 @@ Ext.define('VIV.controller.quejas.ClienteController', {
             }
         });
     },
-    /*  */
-    success: function () {
-
-        this.store.reload();
-
-        if (this.form.btnText === 'Adicionar') {
-            this.form.reset();
-            Ext.toast('Operación realizada exitosamente.', 'Creación OK');
-        } else {
-            this.win.close();
-            Ext.toast('Operación realizada exitosamente.', 'Actualización OK');
-        }
-    },
-    /*  */
+    /* SHOW-MESSAGE */
     message: function (title, message, icon) {
         Ext.Msg.show({ title: title, message: message, buttons:Ext.MessageBox.OK, icon: icon });
     },

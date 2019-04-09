@@ -119,6 +119,13 @@ class Entrevista
     private $trabajador;
 
     /**
+     * @var \Quejas
+     *
+     * @ORM\OneToOne(targetEntity="Quejas", mappedBy="entrevista")
+     */
+    private $queja;
+
+    /**
      * Get id
      *
      * @return integer
@@ -414,5 +421,29 @@ class Entrevista
     public function getTrabajador()
     {
         return $this->trabajador;
+    }
+
+    /**
+     * Set queja
+     *
+     * @param \QuejasBundle\Entity\Quejas $queja
+     *
+     * @return Entrevista
+     */
+    public function setQuejas(\QuejasBundle\Entity\Quejas $queja = null)
+    {
+        $this->queja = $queja;
+
+        return $this;
+    }
+
+    /**
+     * Get queja
+     *
+     * @return \QuejasBundle\Entity\Quejas
+     */
+    public function getQuejas()
+    {
+        return $this->queja;
     }
 }

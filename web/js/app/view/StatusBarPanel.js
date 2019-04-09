@@ -29,7 +29,7 @@ Ext.define('VIV.view.StatusBarPanel', {
                         },
                         interval: 1000
                     });
-                    me.usuario.update('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><span style="color:#000;">Frank</span></b>');
+                    me.usuario.update('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><span style="color:#000;">Yordanis</span></b>');
                     me.detalle.update('<b><span style="color:#000;"></span></b>');
                 },
                 delay: 100

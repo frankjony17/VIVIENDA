@@ -5,7 +5,6 @@ Ext.define('VIV.view.quejas.entrevista.ClienteEntrevistaForm', {
 
     iconCls: '',
     layout: 'fit',
-    width: 640,
     resizable: false,
     modal: true,
 
