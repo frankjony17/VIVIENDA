@@ -1,0 +1,19 @@
+despacho:
+    resource: "@DespachoBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+quejas:
+    resource: "@QuejasBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+nomenclador:
+    resource: "@NomencladorBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+admin:
+    resource: "@AdminBundle/Controller/"
+    type:     annotation
+    prefix:   /

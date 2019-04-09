@@ -1,0 +1,12 @@
+xtype: 'combobox',
+                    fieldLabel: 'FIELDLABEL',
+                    emptyText: 'EMTYTEXT',
+                    name: 'NAME',
+                    store: Ext.create('STORESPASE'),
+                    queryMode: 'local',
+                    displayField: 'DISPLAYFIELD',
+                    valueField: 'id',
+                    editable: false,
+                    flex: 1,
+                    allowBlank: ALLOWBLANK,
+                    afterLabelTextTpl: REQUIRED

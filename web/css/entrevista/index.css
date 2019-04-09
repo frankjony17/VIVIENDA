@@ -1,0 +1,11 @@
+/** Icons for Tree */
+.button-entrevistas:before{font:18px/1 FontAwesome;color: rgb(88, 157, 237);content:"\f009"}
+.menu-clientes:before{font:18px/1 FontAwesome;color: #589ded;content:"\f21b"}
+.menu-entrevistas:before{font:18px/1 FontAwesome;color: #589ded;content:"\f0ca"}
+.button-quejas:before{font:18px/1 FontAwesome;color: #26912e;content:"\f0a1"}
+.menu-quejas:before{font:18px/1 FontAwesome;color: #5a8b6f;content:"\f0a2"}
+.menu-quejas-rechazadas:before{font:18px/1 FontAwesome;color: #5a8b6f;content:"\f1f7"}
+.entrevista:before{font:18px/1 FontAwesome;color: #3b6dc3;content:"\f00a"}
+.queja:before{font:18px/1 FontAwesome;color: #ff6259;content:"\f0f3"}
+
+.logout:before{font:18px/1 FontAwesome;color: #df0d16;content:"\f011"}

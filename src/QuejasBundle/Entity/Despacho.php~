@@ -1,0 +1,58 @@
+<?php
+
+namespace QuejasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Despacho
+ *
+ * @ORM\Table(name="despacho", indexes={@ORM\Index(name="IDX_254BF5B3DE734E51", columns={"cliente_id"})})
+ * @ORM\Entity
+ */
+class Despacho
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="despacho_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="asunto", type="string", length=128, nullable=false)
+     */
+    private $asunto;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_creacion", type="date", nullable=false)
+     */
+    private $fechaCreacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_culminacion", type="date", nullable=false)
+     */
+    private $fechaCulminacion;
+
+    /**
+     * @var \Cliente
+     *
+     * @ORM\ManyToOne(targetEntity="Cliente")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cliente_id", referencedColumnName="id")
+     * })
+     */
+    private $cliente;
+
+
+}
+

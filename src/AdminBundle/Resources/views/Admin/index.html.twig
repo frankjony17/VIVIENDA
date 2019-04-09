@@ -1,0 +1,36 @@
+
+{% extends "::base.html.twig" %}
+
+{% block title %}ADMIN-VIV{% endblock %}
+
+{% block favicon %}{{ asset('favicon.ico') }}{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/admin/index.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        {#{% include "AdminBundle:Admin:globalScript.html.twig" %}#}
+        Ext.application({
+            name: 'VIV',
+            appFolder: '/js/app',
+            controllers: [
+                "admin.AdminController",
+                "admin.MenuController",
+                "nomenclador.ProvinciaController",
+                "nomenclador.MunicipioController",
+                "nomenclador.EmpresaController",
+                "nomenclador.DepartamentoController",
+                "nomenclador.TrabajadorCargoController",
+                "nomenclador.TrabajadorController",
+                "nomenclador.ClasificacionController",
+                "nomenclador.ConformidadController",
+                "nomenclador.QuejasTipoController"
+            ],
+            launch: function(){
+                Ext.create('VIV.view.admin.Viewport');
+            }
+        });
+    </script>
+{% endblock %}

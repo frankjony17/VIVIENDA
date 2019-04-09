@@ -1,0 +1,69 @@
+<?php
+
+namespace QuejasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Empresa
+ *
+ * @ORM\Table(name="empresa", uniqueConstraints={@ORM\UniqueConstraint(name="empresa_codigo_key", columns={"codigo"})})
+ * @ORM\Entity
+ */
+class Empresa
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="empresa_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=57, nullable=false)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codigo", type="string", length=45, nullable=false)
+     */
+    private $codigo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefonos", type="string", length=78, nullable=true)
+     */
+    private $telefonos;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="calle", type="string", length=45, nullable=true)
+     */
+    private $calle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="entre", type="string", length=45, nullable=true)
+     */
+    private $entre;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numero", type="integer", nullable=true)
+     */
+    private $numero;
+
+
+}
+

@@ -1,0 +1,54 @@
+<?php
+
+namespace NomencladorBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Trabajador
+ *
+ * @ORM\Table(name="trabajador", uniqueConstraints={@ORM\UniqueConstraint(name="trabajadores_nombre_apellidos_key", columns={"nombre_apellidos"})}, indexes={@ORM\Index(name="IDX_42157CDF5A91C08D", columns={"departamento_id"}), @ORM\Index(name="IDX_42157CDFE8CD94D9", columns={"trabajador_cargo_id"})})
+ * @ORM\Entity
+ */
+class Trabajador
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="trabajador_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre_apellidos", type="string", length=128, nullable=false)
+     */
+    private $nombreApellidos;
+
+    /**
+     * @var \Departamento
+     *
+     * @ORM\ManyToOne(targetEntity="Departamento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="departamento_id", referencedColumnName="id")
+     * })
+     */
+    private $departamento;
+
+    /**
+     * @var \TrabajadorCargo
+     *
+     * @ORM\ManyToOne(targetEntity="TrabajadorCargo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="trabajador_cargo_id", referencedColumnName="id")
+     * })
+     */
+    private $trabajadorCargo;
+
+
+}
+

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    {#Mi Extjs File#}
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/ext-6.0.1/theme-triton/theme-triton-all.css') }}" />
+
+    <script type="text/javascript" src="{{ asset('js/ext-6.0.1/ext-all.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/ext-6.0.1/theme-triton/theme-triton.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/ext-6.0.1/locale-es.js') }}"></script>
+
+    {% block stylesheet %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+</head>
+</html>

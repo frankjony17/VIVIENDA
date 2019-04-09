@@ -1,0 +1,4 @@
+services:
+#    despacho.example:
+#        class: DespachoBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

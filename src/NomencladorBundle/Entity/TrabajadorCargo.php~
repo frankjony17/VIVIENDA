@@ -1,0 +1,41 @@
+<?php
+
+namespace NomencladorBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TrabajadorCargo
+ *
+ * @ORM\Table(name="trabajador_cargo", uniqueConstraints={@ORM\UniqueConstraint(name="trabajadores_cargo_nombre_key", columns={"nombre"})})
+ * @ORM\Entity
+ */
+class TrabajadorCargo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="trabajador_cargo_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=48, nullable=false)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="string", length=128, nullable=true)
+     */
+    private $descripcion;
+
+
+}
+

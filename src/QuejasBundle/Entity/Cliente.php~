@@ -1,0 +1,107 @@
+<?php
+
+namespace QuejasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Cliente
+ *
+ * @ORM\Table(name="cliente", uniqueConstraints={@ORM\UniqueConstraint(name="cliente_ci_key", columns={"ci"})}, indexes={@ORM\Index(name="IDX_F41C9B25521E1991", columns={"empresa_id"}), @ORM\Index(name="IDX_F41C9B2558BC1BE0", columns={"municipio_id"})})
+ * @ORM\Entity
+ */
+class Cliente
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="cliente_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ci", type="string", length=12, nullable=false)
+     */
+    private $ci;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre_apellidos", type="string", length=128, nullable=false)
+     */
+    private $nombreApellidos;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="calle", type="string", length=45, nullable=true)
+     */
+    private $calle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="entre", type="string", length=45, nullable=true)
+     */
+    private $entre;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="apartamento", type="integer", nullable=true)
+     */
+    private $apartamento;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="edificio", type="integer", nullable=true)
+     */
+    private $edificio;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="casa", type="string", length=25, nullable=true)
+     */
+    private $casa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefonos", type="string", length=78, nullable=true)
+     */
+    private $telefonos;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="correo", type="string", length=128, nullable=true)
+     */
+    private $correo;
+
+    /**
+     * @var \Empresa
+     *
+     * @ORM\ManyToOne(targetEntity="\NomencladorBundle\Entity\Empresa")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="empresa_id", referencedColumnName="id")
+     * })
+     */
+    private $empresa;
+
+    /**
+     * @var \Municipio
+     *
+     * @ORM\ManyToOne(targetEntity="\NomencladorBundle\Entity\Municipio")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="municipio_id", referencedColumnName="id")
+     * })
+     */
+    private $municipio;
+}

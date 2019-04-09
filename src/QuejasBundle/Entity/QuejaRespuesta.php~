@@ -1,0 +1,58 @@
+<?php
+
+namespace QuejasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * QuejaRespuesta
+ *
+ * @ORM\Table(name="queja_respuesta", indexes={@ORM\Index(name="IDX_842377D22AA9CCAA", columns={"queja_id"})})
+ * @ORM\Entity
+ */
+class QuejaRespuesta
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="queja_respuesta_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="respuesta", type="text", nullable=false)
+     */
+    private $respuesta;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="observacion", type="text", nullable=true)
+     */
+    private $observacion;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="estado", type="boolean", nullable=true)
+     */
+    private $estado;
+
+    /**
+     * @var \Quejas
+     *
+     * @ORM\ManyToOne(targetEntity="Quejas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="queja_id", referencedColumnName="id")
+     * })
+     */
+    private $queja;
+
+
+}
+

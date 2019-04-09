@@ -1,0 +1,4 @@
+services:
+    viv.util:
+        class: NomencladorBundle\Services\Util
+        arguments: ['@doctrine.orm.entity_manager', '@validator']

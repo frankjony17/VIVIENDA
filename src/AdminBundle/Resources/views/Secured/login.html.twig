@@ -1,0 +1,21 @@
+
+{% extends "::base.html.twig" %}
+
+{% block title %}LOGIN{% endblock %}
+
+{% block favicon %}{{ asset('favicon.ico') }}{% endblock %}
+
+{% block javascripts %}
+    <script>
+        Ext.application({
+            name: 'VIV',
+            appFolder: '/js/app',
+            controllers: [
+                "admin.AdminController"
+            ],
+            launch: function(){
+                Ext.create('VIV.view.admin.LoginViewport');
+            }
+        });
+    </script>
+{% endblock %}

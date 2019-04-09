@@ -1,0 +1,65 @@
+<?php
+
+namespace QuejasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Quejas
+ *
+ * @ORM\Table(name="quejas", indexes={@ORM\Index(name="IDX_BCDC23DF981704E3", columns={"entrevista_id"}), @ORM\Index(name="IDX_BCDC23DF4CCCF1E1", columns={"quejas_tipo_id"})})
+ * @ORM\Entity
+ */
+class Quejas
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="quejas_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha", type="date", nullable=false)
+     */
+    private $fecha;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="estado", type="boolean", nullable=true)
+     */
+    private $estado;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_culminacion", type="date", nullable=false)
+     */
+    private $fechaCulminacion;
+
+    /**
+     * @var \Entrevista
+     *
+     * @ORM\ManyToOne(targetEntity="Entrevista")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="entrevista_id", referencedColumnName="id")
+     * })
+     */
+    private $entrevista;
+
+    /**
+     * @var \NomencladorBundle\Entity\QuejasTipo
+     *
+     * @ORM\ManyToOne(targetEntity="\NomencladorBundle\Entity\QuejasTipo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="quejas_tipo_id", referencedColumnName="id")
+     * })
+     */
+    private $quejasTipo;
+}

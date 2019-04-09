@@ -1,0 +1,26 @@
+/** Icons for Tree */
+.tree-usuarios:before{font:18px/1 FontAwesome;color: #3bb139;content:"\f0c0"}
+.tree-roles:before{font:18px/1 FontAwesome;color: #913e22;content:"\f09d"}
+
+.quejas:before{font:18px/1 FontAwesome;color: #000000;content:"\f130"}
+.conformidad:before{font:18px/1 FontAwesome;color: #707375;content:"\f15c"}
+.clasificacion:before{font:18px/1 FontAwesome;color: #707375;content:"\f14b"}
+.trabajador:before{font:18px/1 FontAwesome;color: #913e22;content:"\f007"}
+.cargo:before{font:18px/1 FontAwesome;color: #913e22;content:"\f19d"}
+.departamento:before{font:18px/1 FontAwesome;color: #5e8dc7;content:"\f015"}
+.empresa:before{font:18px/1 FontAwesome;color: #5e8dc7;content:"\f19c"}
+.municipio:before{font:18px/1 FontAwesome;color: #1b8945;content:"\f1bb"}
+.provincia:before{font:18px/1 FontAwesome;color: #1b8945;content:"\f0ac"}
+
+.seguridad:before{font:18px/1 FontAwesome;color: #5e8dc7;content:"\f023"}
+.menu-password-item:before{font:18px/1 FontAwesome;color: #c7be51;content:"\f084"}
+.nomencladores:before{font:18px/1 FontAwesome;color: #5e8dc7;content:"\f0c2"}
+.logout:before{font:18px/1 FontAwesome;color: #df0d16;content:"\f011"}
+
+/* Color Row Grid */
+.x-grid-row-no-roles-color {
+    background-color: #ffff99;
+}
+.x-grid-row-estado-color {
+    background-color: #ff9999;
+}

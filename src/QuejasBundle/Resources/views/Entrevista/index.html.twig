@@ -1,0 +1,28 @@
+
+{% extends "::base.html.twig" %}
+
+{% block title %}ENTREVISTA-VIV{% endblock %}
+
+{% block favicon %}{{ asset('favicon.ico') }}{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/entrevista/index.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        {#{% include "AdminBundle:Admin:globalScript.html.twig" %}#}
+        Ext.application({
+            name: 'VIV',
+            appFolder: '/js/app',
+            controllers: [
+                "quejas.ViewportEntrevistaController",
+                "quejas.ClienteController",
+                "quejas.EntrevistaController"
+            ],
+            launch: function(){
+                Ext.create('VIV.view.quejas.EntrevistaViewport');
+            }
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,121 @@
+<?php
+
+namespace QuejasBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Entrevista
+ *
+ * @ORM\Table(name="entrevista", uniqueConstraints={@ORM\UniqueConstraint(name="entrevista_codigo_key", columns={"codigo"})}, indexes={@ORM\Index(name="IDX_5CDCAB2678ECAC4A", columns={"clasificacion_id"}), @ORM\Index(name="IDX_5CDCAB26DE734E51", columns={"cliente_id"}), @ORM\Index(name="IDX_5CDCAB26C08C5806", columns={"conformidad_id"}), @ORM\Index(name="IDX_5CDCAB26EC3656E", columns={"trabajador_id"})})
+ * @ORM\Entity
+ */
+class Entrevista
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="entrevista_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha", type="date", nullable=false)
+     */
+    private $fecha;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codigo", type="string", length=32, nullable=false)
+     */
+    private $codigo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="asunto", type="text", nullable=true)
+     */
+    private $asunto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sintesis", type="text", nullable=true)
+     */
+    private $sintesis;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tramites_realizados", type="text", nullable=true)
+     */
+    private $tramitesRealizados;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="concluciones", type="text", nullable=true)
+     */
+    private $concluciones;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nivel_solucion", type="text", nullable=true)
+     */
+    private $nivelSolucion;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="expediente", type="boolean", nullable=true)
+     */
+    private $expediente;
+
+    /**
+     * @var \NomencladorBundle\Entity\Clasificacion
+     *
+     * @ORM\ManyToOne(targetEntity="\NomencladorBundle\Entity\Clasificacion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="clasificacion_id", referencedColumnName="id")
+     * })
+     */
+    private $clasificacion;
+
+    /**
+     * @var \Cliente
+     *
+     * @ORM\ManyToOne(targetEntity="Cliente")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cliente_id", referencedColumnName="id")
+     * })
+     */
+    private $cliente;
+
+    /**
+     * @var \NomencladorBundle\Entity\Conformidad
+     *
+     * @ORM\ManyToOne(targetEntity="\NomencladorBundle\Entity\Conformidad")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="conformidad_id", referencedColumnName="id")
+     * })
+     */
+    private $conformidad;
+
+    /**
+     * @var \NomencladorBundle\Entity\Trabajador
+     *
+     * @ORM\ManyToOne(targetEntity="NomencladorBundle\Entity\Trabajador")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="trabajador_id", referencedColumnName="id")
+     * })
+     */
+    private $trabajador;
+
+}
